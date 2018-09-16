@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
 import { decorate, observable, configure, action, computed } from "mobx"
 import { observer } from "mobx-react"
+import builds from './stores/builds'
 
-configure({ enforceActions: true })
+configure({ enforceActions: "observed" })
 
 class Store {
-  constructor(){
-  this.employeesList = [
+  @observable 
+  employeesList = [
     { name: "John Doe", salary: 150 },
     { name: "Richard Roe", salary: 225 },
   ]
-}
 
+  @action 
   clearList() {
     this.employeesList = []
   }
 
+  @action 
   pushEmployee(e) {
     this.employeesList.push(e)
   }
 
+  @computed
   get totalSum() {
     let sum = 0
     this.employeesList.map(e => sum = sum + e.salary)
@@ -31,13 +34,6 @@ class Store {
   }
 }
 
-decorate(Store, {
-  employeesList: observable,
-  clearList: action,
-  pushEmployee: action,
-  totalSum: computed
-})
-
 const appStore = new Store()
 
 const Row = (props) => {
@@ -47,6 +43,7 @@ const Row = (props) => {
   </tr>)
 }
 
+@observer
 class Table extends Component {
   render() {
     const { store } = this.props
@@ -79,27 +76,13 @@ class Table extends Component {
     </div>)
   }
 }
-Table = observer(Table)
 
 class Controls extends Component {
-  constructor(props) {
-    super(props);
-    this.addEmployee= this.addEmployee.bind(this);
-    this.clearList= this.clearList.bind(this);
-  }
   
-  addEmployee() {
-    this.props.store.pushEmployee({ name: "pepe", salary: 200 })
-  }
-
-  clearList() {
-    this.props.store.clearList()
-  }
-
   render() {
     return (<div className="controls">
-      <button onClick={this.clearList}>clear table</button>
-      <button onClick={this.addEmployee}>add record</button>
+      <button onClick={() => this.props.store.clearList()}>clear table</button>
+      <button onClick={() => this.props.store.pushEmployee({ name: "pepe", salary: 200 })}>add record</button>
     </div>)
   }
 }
@@ -108,7 +91,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1>Mobx Table</h1>
         <Controls store={appStore} />
         <Table store={appStore} />
       </div>
