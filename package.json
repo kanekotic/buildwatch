@@ -6,6 +6,10 @@
   "main": "src/index.js",
   "scripts": {
     "start": "electron-forge start",
+    "test": "jest",
+    "test:dev": "jest --watchAll test/unit",
+    "test:int": "jest test/integration",
+    "test:cov": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
@@ -47,12 +51,13 @@
     }
   },
   "dependencies": {
+    "electron": "2.0.9",
     "electron-compile": "6.4.3",
-    "electron-devtools-installer": "2.1.0",
+    "electron-devtools-installer": "2.2.4",
     "electron-squirrel-startup": "1.0.0",
-    "react": "15.4.1",
-    "react-dom": "15.4.1",
-    "react-hot-loader": "3.0.0-beta.6"
+    "react": "16.5.1",
+    "react-dom": "16.5.1",
+    "react-hot-loader": "4.3.8"
   },
   "devDependencies": {
     "babel-plugin-transform-async-to-generator": "6.24.1",
@@ -61,12 +66,19 @@
     "babel-preset-react": "6.24.1",
     "electron-forge": "5.2.2",
     "electron-prebuilt-compile": "2.0.7",
-    "eslint": "3",
-    "eslint-config-airbnb": "15",
+    "eslint": "5.6.0",
+    "eslint-config-airbnb": "17.1.0",
     "eslint-plugin-import": "2",
-    "eslint-plugin-jsx-a11y": "5",
+    "eslint-plugin-jsx-a11y": "6.1.1",
     "eslint-plugin-react": "7",
     "jest": "23.6.0",
     "spectron": "4.0.0"
+  },
+  "jest": {
+    "testMatch": [
+      "**/test/**/*-test.js"
+    ],
+    "testEnvironment": "node",
+    "automock": false
   }
 }
