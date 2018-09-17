@@ -1,8 +1,9 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, Menu, Tray } from 'electron';
 import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer';
 import { enableLiveReload } from 'electron-compile';
 
 let mainWindow;
+let tray;
 
 const isDevMode = process.execPath.match(/[\\/]electron/);
 
@@ -13,7 +14,11 @@ const createWindow = async () => {
     width: 800,
     height: 600,
   });
-
+    tray = new Tray('index.png')
+    const contextMenu = Menu.buildFromTemplate([
+      {label: 'Item1', type: 'radio'}
+    ])
+    tray.setContextMenu(contextMenu)
   mainWindow.loadURL(`file://${__dirname}/index.html`);
 
   if (isDevMode) {
