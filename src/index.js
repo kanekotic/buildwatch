@@ -14,11 +14,11 @@ const createWindow = async () => {
     width: 800,
     height: 600,
   });
-    tray = new Tray('index.png')
-    const contextMenu = Menu.buildFromTemplate([
-      {label: 'Item1', type: 'radio'}
-    ])
-    tray.setContextMenu(contextMenu)
+  tray = new Tray('index.png')
+  const contextMenu = Menu.buildFromTemplate([
+    {label: 'Item1', type: 'radio'}
+  ])
+  tray.setContextMenu(contextMenu)
   mainWindow.loadURL(`file://${__dirname}/index.html`);
 
   if (isDevMode) {
