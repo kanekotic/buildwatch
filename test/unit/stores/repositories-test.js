@@ -1,5 +1,5 @@
 jest.mock('@octokit/rest', () => jest.fn())
-import store from '../../../src/stores/repositories/github'
+import store from '../../../src/stores/repositories'
 import faker from 'faker'
 import octokit from '@octokit/rest'
 import { when } from 'mobx';
