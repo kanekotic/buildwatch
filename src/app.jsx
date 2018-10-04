@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import {AppContainer} from 'react-hot-loader'
 import RepositoryList from './components/repository-list'
-import RepositoryListStore from './stores/repositories'
+import githubRepositories from './stores/repositories/github'
 
 class App extends Component {
   render() {
     return (
       <div>
-        <RepositoryList store={RepositoryListStore} />
+        <RepositoryList store={githubRepositories} />
       </div>
     )
   }

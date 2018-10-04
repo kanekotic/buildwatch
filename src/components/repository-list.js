@@ -8,7 +8,7 @@ export default class RepositoryList extends Component {
         const { store } = this.props
         return (<div className="repositoryList">
             {
-                store.repositoryList.map((repository, index) =>
+                store.repositories.map((repository, index) =>
                     <Repository key={`repo_${index}`} {...repository}/>
                 )
             }

@@ -4,7 +4,7 @@ export default class Repository extends Component {
   
     render() {
       return (<div className="repository">
-        {this.props.name}
+        {this.props.full_name}
       </div>)
     }
   }
