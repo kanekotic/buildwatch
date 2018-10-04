@@ -2632,6 +2632,12 @@ electron-packager@^11.0.0:
     semver "^5.3.0"
     yargs-parser "^9.0.2"
 
+electron-plugin@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/electron-plugin/-/electron-plugin-1.0.3.tgz#46bee97de41f8fdb0c6a3d2f9a8b9af44c5b9282"
+  dependencies:
+    npm "6.4.1"
+
 electron-prebuilt-compile@2.0.7:
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/electron-prebuilt-compile/-/electron-prebuilt-compile-2.0.7.tgz#a33288f40057f211533992b8f3749290d2293d63"
@@ -5733,7 +5739,7 @@ npm-user-validate@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/npm-user-validate/-/npm-user-validate-1.0.0.tgz#8ceca0f5cea04d4e93519ef72d0557a75122e951"
 
-npm@^6.4.1:
+npm@6.4.1, npm@^6.4.1:
   version "6.4.1"
   resolved "https://registry.yarnpkg.com/npm/-/npm-6.4.1.tgz#4f39f9337b557a28faed4a771d5c8802d6b4288b"
   dependencies:
